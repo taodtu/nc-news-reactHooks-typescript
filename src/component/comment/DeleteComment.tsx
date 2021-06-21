@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "@material-ui/core";
 import { Store, IAction, CommentsLoaded } from "../store/comments";
-import { UserContext } from "../store/UserContext";
+import { UserContext } from "../store/userContext";
 import { deleteComment } from "../api";
 
 interface IProps {

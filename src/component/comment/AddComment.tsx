@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 import Style from "./AddComment.module.css";
 import { Store, IAction, CommentsLoaded } from "../store/comments";
-import { UserContext } from "../store/UserContext";
+import { UserContext } from "../store/userContext";
 import { addComment } from "../api";
 import { IComment } from "../types";
 

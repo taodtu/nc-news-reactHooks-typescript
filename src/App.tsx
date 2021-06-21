@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "./component/layout/Header";
 import Footer from "./component/layout/Footer";
 import "./App.css";
-import { UserContext } from "./component/store/UserContext";
+import { UserContext } from "./component/store/userContext";
 import UserSelect from "./component/layout/UserSelect";
 import { Link, Router } from "@reach/router";
 import Navigation from "./component/layout/Navigation";
