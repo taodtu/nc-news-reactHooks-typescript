@@ -58,12 +58,12 @@ const ArticleList: React.FunctionComponent<IArticleListProps> = ({
         <ToggleButton left={"desc"} right={"asc"} onClick={handleOrderClick} />
       </div>
       {data.status === "loaded" &&
-        data.payload.articles.articles.map(article => (
+        data.payload.articles.map(article => (
           <ArticleItem key={article.article_id} article={article} />
         ))}
       {data.status === "loaded" && (
         <Page
-          pageTotal={Math.ceil(data.payload.articles.total_count / limit)}
+          pageTotal={Math.ceil(data.payload.total_count / limit)}
           onClick={handlePageClick}
           p={p}
         />

@@ -15,10 +15,8 @@ export interface IArticle {
 }
 
 export interface IArticles {
-  articles: {
     articles: IArticle[];
     total_count: number;
-  };
 }
 
 export interface IUser {

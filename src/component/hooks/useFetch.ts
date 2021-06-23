@@ -52,10 +52,12 @@ function useFetch<T>(
     } else {
       apiCall(topic, author, sort_by, order, limit, p)
         .then((response: T) =>
-          setResult({ status: "loaded", payload: response })
+        {console.log(response)
+          setResult({ status: "loaded", payload: response })}
         )
         .catch((error: Error) => setResult({ status: "error", error }));
     }
+    // eslint-disable-next-line
   }, [apiCall, topic, author, limit, order, p, sort_by]);
 
   return result;

@@ -24,6 +24,7 @@ const CommentList: React.FunctionComponent<IProps> = ({ id, getComments }) => {
         payload:{comments:data, status:"loaded"  }}
       );
     });
+    // eslint-disable-next-line
   }, [getComments, id]);
   return (
     <div>

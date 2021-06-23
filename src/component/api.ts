@@ -5,7 +5,7 @@ const request = axios.create({
 });
 
 export const getTopics = () => {
-  return request.get("/topics").then(({ data }) => data.topics);
+  return request.get("/topics").then(({ data }) => data);
 };
 
 export const getArticles = (
