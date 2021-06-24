@@ -27,7 +27,7 @@ export const getUser = (username: string | number | undefined) => {
 
 export const getArticle = (article_id: string | number | undefined) => {
   return request
-    .get(`/article`, { params: { article_id} })
+    .get(`/article`, { params: { article_id: `article_id#${article_id}`} })
     .then(({ data }) => data);
 };
 
@@ -47,16 +47,16 @@ export const getCommentsByArticle = (
   article_id: number|string,
 ) => {
   return request
-    .get(`/articles/${article_id}/comments`)
-    .then(({ data }) => data.comments);
+    .get(`/comments`, { params: { article_id} })
+    .then(({ data }) => data);
 };
 
 export const getCommentsByUser = (
   username: string |number,
 ) => {
   return request
-    .get(`/users/${username}/comments`)
-    .then(({ data }) => data.comments);
+    .get(`/comments`, { params: { username} })
+    .then(({ data }) => data);
 };
 
 export const updateComment = (id: number, body: { inc_votes: number }) => {
