@@ -2,11 +2,7 @@ import * as React from 'react';
 import Style from './User.module.css';
 import { IUser } from '../types/index';
 
-interface IProps {
-    user:IUser
-}
-
-const UserItem: React.FunctionComponent<IProps> = ({ user: { avatar_url, username, name } }) => {
+const UserItem: React.FunctionComponent<IUser> = ({ avatar_url, username, name }) => {
     return (
 
         <div className={Style.user}>

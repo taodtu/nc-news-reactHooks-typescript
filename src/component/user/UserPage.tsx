@@ -24,7 +24,7 @@ const UserPage: React.FunctionComponent<IUserPageProps> = ({ author }) => {
       <hr />
       {data.status === "loading" && <LinearProgress />}
       {data.status === "error" && <p>error: {data.error}</p>}
-      {data.status === "loaded" && <UserItem user={data.payload} />}
+      {data.status === "loaded" && <UserItem {...data.payload} />}
       {data.status === "loaded" && (
         <ToggleButton
           left={"Articles"}

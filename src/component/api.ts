@@ -22,7 +22,7 @@ export const getArticles = (
 };
 
 export const getUser = (username: string | number | undefined) => {
-  return request.get(`/user`, { params: { username} }).then(({ data }) => data);
+  return request.get(`/user`, { params: { username: `user_id#${username}`} }).then(({ data }) => data);
 };
 
 export const getArticle = (article_id: string | number | undefined) => {
