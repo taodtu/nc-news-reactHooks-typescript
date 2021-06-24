@@ -20,11 +20,14 @@ const AddComment: React.FunctionComponent<IProps> = ({ id }) => {
 
   const onHandleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const body = { username: castUser, body: text };
-    addComment(id, body).then((comment: IComment) => {
+    const body = { author: castUser, body: text, article_id: id };
+    addComment(body).then((comment: IComment) => {
       (dispatch as React.Dispatch<IAction>)({
         type: "ADD_COMMENT",
-        payload: { comments: [comment, ...(state as CommentsLoaded).comments], status:"loaded"}
+        payload: {
+          comments: [comment, ...(state as CommentsLoaded).comments],
+          status: "loaded",
+        },
       });
     });
     setText("");

@@ -38,10 +38,10 @@ export const updateArticle = ( body: IArticle| IComment | undefined) => {
     .then(({ data }) => data);
 };
 
-export const addComment = (article_id: number, body: {username: string; body:string}) => {
+export const addComment = ( body: {author: string; body:string, article_id: number}) => {
   return request
-    .post(`/articles/${article_id}/comments`, body)
-    .then(({ data }) => data.comment);
+    .post(`/comment`, body)
+    .then(({ data }) => data);
 };
 
 export const getCommentsByArticle = (
@@ -63,9 +63,9 @@ export const getCommentsByUser = (
 export const updateComment = ( body: IArticle| IComment | undefined) => {
   return request
     .patch(`/comment`, body)
-    .then(({ data }) => data.comment);
+    .then(({ data }) => data);
 };
 
 export const deleteComment = (id: string) => {
-  return request.delete(`/comments/${id}`);
+  return request.delete(`/comment`);
 };
