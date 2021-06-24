@@ -5,11 +5,14 @@ import { updateComment } from "../api";
 import { Link } from "@reach/router";
 
 interface IProps {
-  comment_id: number;
+  comment_id: string;
   author: string;
   body: string;
   votes: number;
   created_at: string;
+  spk: string;
+  id: string;
+  article_id: number;
 }
 
 const Comment: React.FunctionComponent<IProps> = ({
@@ -18,7 +21,10 @@ const Comment: React.FunctionComponent<IProps> = ({
   body,
   votes,
   created_at,
-  children
+  spk,
+  id,
+  article_id,
+  children,
 }) => {
   return (
     <div className={Style.article}>
@@ -33,7 +39,19 @@ const Comment: React.FunctionComponent<IProps> = ({
       </div>
       <div className={Style.right}>
         <div className="vote">
-          <Vote votes={votes} id={comment_id} handleVote={updateComment} />
+          <Vote
+            comment={{
+              comment_id,
+              author,
+              body,
+              votes,
+              created_at,
+              spk,
+              id,
+              article_id,
+            }}
+            handleVote={updateComment}
+          />
         </div>
         <div className="vote">{children}</div>
       </div>

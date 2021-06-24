@@ -1,24 +1,24 @@
 import * as React from "react";
 import { Button } from "@material-ui/core";
-import { IArticle } from "../types";
+import { IArticle, IComment } from "../types";
 
 interface IVoteProps {
-  votes: number;
-  id: number;
-  handleVote: (id: number, body: { inc_votes: number }) => Promise<IArticle>;
+  article?: IArticle;
+  comment?: IComment;
+  handleVote: (body: IArticle | IComment | undefined) => Promise<any>;
 }
 
 const Vote: React.FunctionComponent<IVoteProps> = ({
-  votes,
-  id,
-  handleVote
+  article,
+  comment,
+  handleVote,
 }) => {
+  const body = article ? article : comment;
   const [vote, setVote] = React.useState(0);
   const updateVote = (change: number) => {
     setVote(vote + change);
-    handleVote(id, { inc_votes: change }).catch(error =>
-      setVote(vote - change)
-    );
+    body!.votes = body!.votes + change;
+    handleVote(body).catch((error) => setVote(vote - change));
   };
   return (
     <div className="vote-block">
@@ -33,7 +33,7 @@ const Vote: React.FunctionComponent<IVoteProps> = ({
           + vote!
         </Button>
       </div>
-      <p>Votes: {votes + vote}</p>
+      <p>Votes: {body!.votes}</p>
       <div className="vote">
         <Button
           variant="outlined"

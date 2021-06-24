@@ -28,7 +28,7 @@ export interface IUser {
 }
 
 export interface IComment {
-  comment_id: number;
+  comment_id: string;
   article_id: number;
   author: string;
   body: string;

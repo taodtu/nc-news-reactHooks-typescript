@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IArticle, IComment } from "./types";
 
 const request = axios.create({
   baseURL: "http://localhost:7071/api"
@@ -31,10 +32,10 @@ export const getArticle = (article_id: string | number | undefined) => {
     .then(({ data }) => data);
 };
 
-export const updateArticle = (id: number, body: { inc_votes: number }) => {
+export const updateArticle = ( body: IArticle| IComment | undefined) => {
   return request
     .patch(`/article`, body)
-    .then(({ data }) => data.article);
+    .then(({ data }) => data);
 };
 
 export const addComment = (article_id: number, body: {username: string; body:string}) => {
@@ -59,12 +60,12 @@ export const getCommentsByUser = (
     .then(({ data }) => data);
 };
 
-export const updateComment = (id: number, body: { inc_votes: number }) => {
+export const updateComment = ( body: IArticle| IComment | undefined) => {
   return request
-    .patch(`/comments/${id}`, body)
+    .patch(`/comment`, body)
     .then(({ data }) => data.comment);
 };
 
-export const deleteComment = (id: number) => {
+export const deleteComment = (id: string) => {
   return request.delete(`/comments/${id}`);
 };

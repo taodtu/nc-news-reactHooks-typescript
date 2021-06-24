@@ -5,7 +5,7 @@ import { UserContext } from "../store/userContext";
 import { deleteComment } from "../api";
 
 interface IProps {
-  comment_id: number;
+  comment_id: string;
   author: string;
 }
 
@@ -16,7 +16,7 @@ const DeleteComment: React.FunctionComponent<IProps> = ({
   const { state, dispatch } = useContext(Store);
   let user = useContext(UserContext);
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     deleteComment(id).then(() => {
       (dispatch as React.Dispatch<IAction>)({
         type: "DELETE_COMMENT",
