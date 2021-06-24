@@ -12,6 +12,8 @@ export interface IArticle {
   votes: number;
   created_at: string;
   author: string;
+  spk:string,
+  id:string
 }
 
 export interface IArticles {
@@ -32,4 +34,6 @@ export interface IComment {
   body: string;
   votes: number;
   created_at: string;
+  spk:string;
+  id:string
 }

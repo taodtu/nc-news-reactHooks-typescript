@@ -51,9 +51,7 @@ function useFetch<T>(
         .catch((error: Error) => setResult({ status: "error", error }));
     } else {
       apiCall(topic, author, sort_by, order, limit, p)
-        .then((response: T) =>
-        {console.log(response)
-          setResult({ status: "loaded", payload: response })}
+        .then((response: T) =>setResult({ status: "loaded", payload: response })
         )
         .catch((error: Error) => setResult({ status: "error", error }));
     }

@@ -22,18 +22,18 @@ export const getArticles = (
 };
 
 export const getUser = (username: string | number | undefined) => {
-  return request.get(`/users/${username}`).then(({ data }) => data.user);
+  return request.get(`/user`, { params: { username} }).then(({ data }) => data);
 };
 
 export const getArticle = (article_id: string | number | undefined) => {
   return request
-    .get(`/articles/${article_id}`)
-    .then(({ data }) => data.article);
+    .get(`/article`, { params: { article_id} })
+    .then(({ data }) => data);
 };
 
 export const updateArticle = (id: number, body: { inc_votes: number }) => {
   return request
-    .patch(`/articles/${id}`, body)
+    .patch(`/article`, body)
     .then(({ data }) => data.article);
 };
 
