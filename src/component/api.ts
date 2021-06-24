@@ -66,6 +66,6 @@ export const updateComment = ( body: IArticle| IComment | undefined) => {
     .then(({ data }) => data);
 };
 
-export const deleteComment = (id: string) => {
-  return request.delete(`/comment`);
+export const deleteComment = (body: IComment | undefined) => {
+  return request.delete(`/comment`, {data: body});
 };

@@ -5,7 +5,7 @@ import {
   Store,
   IAction,
   CommentsLoaded,
-  CommentsLoading
+  CommentsLoading,
 } from "../store/comments";
 import DeleteComment from "./DeleteComment";
 import { IComment } from "../types";
@@ -18,11 +18,11 @@ interface IProps {
 const CommentList: React.FunctionComponent<IProps> = ({ id, getComments }) => {
   const { state, dispatch } = React.useContext(Store);
   React.useEffect(() => {
-    getComments(id).then(data => {
+    getComments(id).then((data) => {
       (dispatch as React.Dispatch<IAction>)({
         type: "FETCH_COMMENTS",
-        payload:{comments:data, status:"loaded"  }}
-      );
+        payload: { comments: data, status: "loaded" },
+      });
     });
     // eslint-disable-next-line
   }, [getComments, id]);
@@ -31,12 +31,9 @@ const CommentList: React.FunctionComponent<IProps> = ({ id, getComments }) => {
       {(state as CommentsLoading).status === "loading" && <LinearProgress />}
       <h3>Comments</h3>
       {(state as CommentsLoaded).status === "loaded" &&
-        (state as CommentsLoaded).comments.map(comment => (
+        (state as CommentsLoaded).comments.map((comment) => (
           <Comment key={comment.comment_id} {...comment}>
-            <DeleteComment
-              comment_id={comment.comment_id}
-              author={comment.author}
-            />
+            <DeleteComment {...comment} />
           </Comment>
         ))}
     </div>
