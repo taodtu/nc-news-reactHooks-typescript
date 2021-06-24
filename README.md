@@ -1,6 +1,7 @@
-# A Front-end practice reference with React Hooks and Typescript, coupled with a back-end with serverless azure functions and No-SQL Cosmos DB.
+# A Front-end practice reference with React Hooks and Typescript, coupled with a back-end with serverless Azure functions and No-SQL Cosmos DB.
 
 This is a refactoring of the nc-news project (https://github.com/taodtu/nc-news-rest-client) with **`Reack hooks`** and **`Typescript`**.
+In order to run this project locally, you need to have an Azure account and then start the backend project from (https://github.com/taodtu/nc-news-azure)
 
 ## Features
 
